@@ -1,0 +1,46 @@
+# logger_config.toml
+[log]
+level = "DEBUG"
+log_dir = "logs"
+max_bytes = 10485760  # 10MB
+backup_count = 5
+use_json = false
+timezone = "Asia/Shanghai"
+
+[log.formatters.default]
+#format = "{asctime} | {levelname:^8} | {name:20} | {filename:15}:{lineno:<4} | {funcName:15} | {message}"
+#format = "{asctime} | {levelname} | {name} | {filename}:{lineno} | {funcName} | {message}"
+format = "{asctime}\t{levelname}\t{name}\t{filename}:{lineno}\t{funcName}\t{message}"
+style = "{"
+datefmt = "%Y-%m-%d %H:%M:%S"
+# 使用 colorlog 的 JsonFormatter（支持颜色）
+formatter_class = "colorlog.ColoredFormatter"
+
+# ✅ 彩色控制台格式
+[log.formatters.colored]
+format = "{log_color}{asctime} | {levelname:^8} | {name:20} | {filename:15}:{lineno:<4} | {funcName:15} | {message}{reset}"
+datefmt = "%Y-%m-%d %H:%M:%S"
+# 注意：{log_color} 和 {reset} 是 colorlog 自动注入的
+
+# 颜色配置（可自定义）
+[log.formatters.colored.colors]
+DEBUG = "reset"
+INFO = "reset"
+WARNING = "yellow"
+ERROR = "red"
+CRITICAL = "bold_red"
+
+[log.formatters.json]
+class = "pythonjsonlogger.jsonlogger.JsonFormatter"
+format = "asctime,levelname,name,funcName,message,pathname,lineno"
+
+[log.handlers.file]
+when = "midnight"       # 每天轮转
+interval = 1
+encoding = "utf-8"
+
+[log.handlers.console]
+class = "logging.StreamHandler"
+level = "DEBUG"
+stream = "ext://sys.stdout"
+formatter = "colored"  # 指向上面定义的 colored formatter
