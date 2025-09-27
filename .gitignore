@@ -1,4 +1,4 @@
 .idea
 /logs
 /tmp
-/tests/logs
+/tests/logs/
