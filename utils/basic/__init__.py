@@ -16,7 +16,7 @@
 对于需要debug的场景，可以直接使用logger_manager生成相关的日志器
 """
 
-from utils.basic.logger import (
+from .logger import (
     logger,
     info,
     error,
@@ -26,7 +26,7 @@ from utils.basic.logger import (
     logger_manager,
 )
 
-
+from .file_controller import FileController
 
 
 
@@ -38,6 +38,7 @@ __all__ = [
     "warning",
     "critical",
     "logger_manager",
+    "FileController",
 ]
 
 
