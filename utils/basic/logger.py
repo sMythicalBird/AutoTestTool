@@ -14,6 +14,7 @@ from typing import Any, Dict, Optional
 from zoneinfo import ZoneInfo
 import tomllib  # Python 3.11+ 内置
 import sys
+from config import PATHS
 
 # =============================
 # 自定义时区格式化器
@@ -58,7 +59,7 @@ class StructuredLogger:
     def _setup_logging(self) -> None:
         """配置日志系统"""
         log_level = getattr(logging, self.config["level"].upper(), logging.INFO)
-        log_dir = Path(self.config["log_dir"])
+        log_dir = PATHS["logs"] if "logs" in PATHS else Path("./logs")
         log_dir.mkdir(exist_ok=True, parents=True)
 
         # 获取根日志器

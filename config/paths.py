@@ -21,6 +21,7 @@ PATHS = {
     "tests":    ROOT_DIR / "tests",
     "tools":    ROOT_DIR / "tools",
     "utils":    ROOT_DIR / "utils",
+    "logs":     ROOT_DIR / "logs",
 }
 
 
