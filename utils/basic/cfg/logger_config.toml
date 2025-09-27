@@ -1,4 +1,4 @@
-# logger_config.toml
+# logger_config.cfg
 [log]
 level = "DEBUG"
 log_dir = "logs"

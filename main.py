@@ -4,9 +4,9 @@
 @time:      2025/9/26 04:59
 @author:    sMythicalBird
 """
-from utils.logger import logger_manager
+from utils import logger_manager, logger
 
-logger = logger_manager.get_logger(__name__)
+# logger = logger_manager.get_logger(__name__)
 
 def test():
     logger.info("测试日志系统")

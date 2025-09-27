@@ -187,7 +187,7 @@ class StructuredLogger:
 # =============================
 # 全局实例：供外部直接使用
 # =============================
-_CONFIG_PATH = Path(__file__).parent / "logger_config.toml"
+_CONFIG_PATH = Path(__file__).parent / "cfg/logger_config.toml"
 logger_manager = StructuredLogger(_CONFIG_PATH)
 logger = logger_manager.get_logger("root")
 
